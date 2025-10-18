@@ -50,8 +50,8 @@ project_catalog_api/
 
 **1.Clone the repository:**
 ```text
-git clone <repo-url>
-cd project_catalog_api
+git clone <https://github.com/ayush-37/project_catalog.git>
+cd project_catalog
 ```
 
 **2.Install dependencies:**
@@ -90,7 +90,40 @@ This is the easiest one.
 ![Get request (product)](assets/get_product.png)
 4. Click **Send**.  
 5. You will see the JSON response in the bottom panel.  
+Sample Response: 
+```JSON
 
+{
+  "totalProducts": 33,
+  "totalPages": 4,
+  "currentPage": 1,
+  "limit": 10,
+  "products": [
+    {
+      "sku": "TSHIRT-RED-001",
+      "name": "Classic Cotton T-Shirt",
+      "brand": "Stream Threads",
+      "color": "Red",
+      "size": "M",
+      "mrp": "799.00",
+      "price": "499.00",
+      "quantity": 20
+    },
+    {
+      "sku": "JEANS-BLU-032",
+      "name": "Slim Fit Jeans",
+      "brand": "DenimWorks",
+      "color": "Blue",
+      "size": "32",
+      "mrp": "1999.00",
+      "price": "1599.00",
+      "quantity": 15
+    }
+    // ... other products
+  ]
+}
+
+```
 ---
 
 ### 2. Test **GET /products/search** (The Search API)
@@ -111,7 +144,23 @@ This is also a GET request and works just like the one above, but you'll use the
 ![Get request (search)](assets/search_product.png)
 6. Click **Send**.  
 7. You'll see the filtered results in the response panel.  
+Sample Response: 
+```JSON
 
+[
+  {
+    "sku": "JEANS-BLU-032",
+    "name": "Slim Fit Jeans",
+    "brand": "DenimWorks",
+    "color": "Blue",
+    "size": "32",
+    "mrp": "1999.00",
+    "price": "1599.00",
+    "quantity": 15
+  },
+]
+
+```
 ---
 
 ### 3. Test **POST /upload** (The File Upload API)
@@ -129,7 +178,15 @@ This one is different — you’ll upload a CSV file.
 9. In the **VALUE** column, a **Select Files** button will appear. Click it and choose your `table.csv` file from your computer.  
 ![Post request (upload)](assets/post_upload.png)
 10. Once the key and file are set, click **Send**.  
-
+Sample Success Response: 
+```JSON
+{
+  "message": "File processed successfully",
+  "stored": 33,
+  "failed": 0,
+  "errors": []
+}
+```
 Your CSV file will be uploaded and processed by the API.
 
 ## 🚀 Conclusion
